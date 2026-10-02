@@ -1,0 +1,136 @@
+:root {
+  --kertas: #ffffff;
+  --latar: #e9edef;
+  --tinta: #1f2a33;
+  --redup: #5b6b75;
+  --aksen: #1d5c63;
+  --garis: #c9d6d9;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--latar);
+  color: var(--tinta);
+  font-family: "Segoe UI", Calibri, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  padding: 24px 12px;
+}
+
+/* Halaman A4 */
+.halaman {
+  width: 100%;
+  max-width: 794px;
+  min-height: 1123px;
+  margin: 0 auto;
+  padding: 48px 56px;
+  background: var(--kertas);
+  border-top: 6px solid var(--aksen);
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.12);
+}
+
+header {
+  margin-bottom: 28px;
+}
+
+h1 {
+  font-size: 34px;
+  line-height: 1.15;
+  color: var(--aksen);
+}
+
+.posisi {
+  margin-top: 4px;
+  font-size: 17px;
+  color: var(--redup);
+}
+
+section + section {
+  margin-top: 24px;
+}
+
+h2 {
+  font-size: 18px;
+  color: var(--aksen);
+  padding-bottom: 4px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid var(--garis);
+}
+
+.baris {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+
+h3 {
+  font-size: 16px;
+}
+
+.tahun {
+  font-size: 13px;
+  color: var(--redup);
+  white-space: nowrap;
+}
+
+/* Daftar */
+ul {
+  list-style: none;
+}
+
+.daftar li {
+  position: relative;
+  padding-left: 14px;
+  overflow-wrap: anywhere;
+}
+
+.daftar li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.7em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--aksen);
+}
+
+/* HP / layar kecil */
+@media (max-width: 640px) {
+  .halaman {
+    min-height: 0;
+    padding: 32px 24px;
+  }
+
+  .baris {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+
+/* Cetak / simpan PDF */
+@page {
+  size: A4;
+  margin: 0;
+}
+
+@media print {
+  body {
+    background: var(--kertas);
+    padding: 0;
+  }
+
+  .halaman {
+    max-width: none;
+    min-height: 297mm;
+    box-shadow: none;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
